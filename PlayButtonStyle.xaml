@@ -1,0 +1,23 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:thurst_media_player">
+
+    <ControlTemplate x:Key="PlayButtonStyle" TargetType="{x:Type Button}">
+        <Grid RenderTransformOrigin="0.5,0.5" x:Name="RootGrid">
+            <Button Height="auto" BorderThickness="0" BorderBrush="Transparent" Padding="-4"
+                Style="{DynamicResource {x:Static ToolBar.ButtonStyleKey}}"  Margin="1,1,1,-1">
+                <Image Source="Resources/media-play.png"></Image>
+            </Button>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="RootGrid" Property="RenderTransform">
+                    <Setter.Value>
+                        <ScaleTransform ScaleX="0.9" ScaleY="0.9"></ScaleTransform>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+</ResourceDictionary>

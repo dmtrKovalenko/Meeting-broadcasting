@@ -1,0 +1,18 @@
+c:\users\diant\documents\visual studio 2015\Projects\thurst media player\thurst media player\bin\Debug\thurst media player.exe.config
+c:\users\diant\documents\visual studio 2015\Projects\thurst media player\thurst media player\obj\Debug\MainWindow.g.cs
+c:\users\diant\documents\visual studio 2015\Projects\thurst media player\thurst media player\obj\Debug\App.g.cs
+c:\users\diant\documents\visual studio 2015\Projects\thurst media player\thurst media player\obj\Debug\thurst media player_MarkupCompile.cache
+c:\users\diant\documents\visual studio 2015\Projects\thurst media player\thurst media player\obj\Debug\thurst media player_MarkupCompile.lref
+c:\users\diant\documents\visual studio 2015\Projects\thurst media player\thurst media player\bin\Debug\thurst media player.exe
+c:\users\diant\documents\visual studio 2015\Projects\thurst media player\thurst media player\bin\Debug\thurst media player.pdb
+c:\users\diant\documents\visual studio 2015\Projects\thurst media player\thurst media player\obj\Debug\MainWindow.baml
+c:\users\diant\documents\visual studio 2015\Projects\thurst media player\thurst media player\obj\Debug\thurst media player.g.resources
+c:\users\diant\documents\visual studio 2015\Projects\thurst media player\thurst media player\obj\Debug\thurst_media_player.Properties.Resources.resources
+c:\users\diant\documents\visual studio 2015\Projects\thurst media player\thurst media player\obj\Debug\thurst media player.csproj.GenerateResource.Cache
+c:\users\diant\documents\visual studio 2015\Projects\thurst media player\thurst media player\obj\Debug\thurst media player.exe
+c:\users\diant\documents\visual studio 2015\Projects\thurst media player\thurst media player\obj\Debug\thurst media player.pdb
+C:\Users\diant\documents\visual studio 2015\Projects\thurst media player\thurst media player\obj\Debug\App.baml
+C:\Users\diant\documents\visual studio 2015\Projects\thurst media player\thurst media player\obj\Debug\PlayButtonStyle.baml
+C:\Users\diant\documents\visual studio 2015\Projects\thurst media player\thurst media player\obj\Debug\PauseButtonStyle.baml
+C:\Users\diant\documents\visual studio 2015\Projects\thurst media player\thurst media player\obj\Debug\Icons.baml
+C:\Users\diant\documents\visual studio 2015\Projects\thurst media player\thurst media player\obj\Debug\thurst media player.csprojResolveAssemblyReference.cache

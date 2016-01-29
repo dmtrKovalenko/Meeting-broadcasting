@@ -1,0 +1,14 @@
+C:\Users\diant\documents\visual studio 2015\Projects\thurst media player\thurst media player\bin\Release\thurst media player.exe.config
+C:\Users\diant\documents\visual studio 2015\Projects\thurst media player\thurst media player\bin\Release\thurst media player.exe
+C:\Users\diant\documents\visual studio 2015\Projects\thurst media player\thurst media player\bin\Release\thurst media player.pdb
+C:\Users\diant\documents\visual studio 2015\Projects\thurst media player\thurst media player\obj\Release\MainWindow.g.cs
+C:\Users\diant\documents\visual studio 2015\Projects\thurst media player\thurst media player\obj\Release\App.g.cs
+C:\Users\diant\documents\visual studio 2015\Projects\thurst media player\thurst media player\obj\Release\thurst media player_MarkupCompile.cache
+C:\Users\diant\documents\visual studio 2015\Projects\thurst media player\thurst media player\obj\Release\thurst media player_MarkupCompile.lref
+C:\Users\diant\documents\visual studio 2015\Projects\thurst media player\thurst media player\obj\Release\Dictionary1.baml
+C:\Users\diant\documents\visual studio 2015\Projects\thurst media player\thurst media player\obj\Release\MainWindow.baml
+C:\Users\diant\documents\visual studio 2015\Projects\thurst media player\thurst media player\obj\Release\thurst media player.g.resources
+C:\Users\diant\documents\visual studio 2015\Projects\thurst media player\thurst media player\obj\Release\thurst_media_player.Properties.Resources.resources
+C:\Users\diant\documents\visual studio 2015\Projects\thurst media player\thurst media player\obj\Release\thurst media player.csproj.GenerateResource.Cache
+C:\Users\diant\documents\visual studio 2015\Projects\thurst media player\thurst media player\obj\Release\thurst media player.exe
+C:\Users\diant\documents\visual studio 2015\Projects\thurst media player\thurst media player\obj\Release\thurst media player.pdb
