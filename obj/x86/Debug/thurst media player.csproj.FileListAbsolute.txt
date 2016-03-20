@@ -1,0 +1,10 @@
+D:\Proj\thurst media player\thurst media player\bin\x86\Debug\thurst media player.exe.config
+D:\Proj\thurst media player\thurst media player\obj\x86\Debug\Controls\MarqueeTextControl.baml
+D:\Proj\thurst media player\thurst media player\obj\x86\Debug\Controls\CircularProgressBar.g.cs
+D:\Proj\thurst media player\thurst media player\obj\x86\Debug\MainWindow.g.cs
+D:\Proj\thurst media player\thurst media player\obj\x86\Debug\Controls\MarqueeTextControl.g.cs
+D:\Proj\thurst media player\thurst media player\obj\x86\Debug\App.g.cs
+D:\Proj\thurst media player\thurst media player\obj\x86\Debug\GeneratedInternalTypeHelper.g.cs
+D:\Proj\thurst media player\thurst media player\obj\x86\Debug\thurst media player_MarkupCompile.cache
+D:\Proj\thurst media player\thurst media player\obj\x86\Debug\thurst media player_MarkupCompile.lref
+D:\Proj\thurst media player\thurst media player\bin\Debug\thurst media player.exe.config
