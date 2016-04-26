@@ -20,28 +20,26 @@ namespace thurst_media_player.Controls
     /// </summary>
     public partial class MarqueeText : UserControl
     {
-        public String MarqueeContent
+        public static readonly DependencyProperty MarqueeContentProperty =
+         DependencyProperty.Register("MarqueeContent", typeof(string), typeof(MarqueeText), new UIPropertyMetadata(string.Empty));
+
+        public static readonly DependencyProperty IsMarquingProperty =
+         DependencyProperty.Register("IsMarquing", typeof(bool), typeof(MarqueeText), new UIPropertyMetadata(false));
+
+        public string MarqueeContent
         {
+            get { return (string)GetValue(MarqueeContentProperty); }
             set
             {
+                SetValue(MarqueeContentProperty, value);
                 tbmarquee.Text = value;
-
             }
         }
 
-        private bool _isMarquing = false;
-
         public bool IsMarquing
         {
-            get { return _isMarquing; }
-            set
-            {
-                if (value != IsMarquing)
-                {
-                    _isMarquing = value;
-                    RightToLeftMarquee();
-                }
-            }
+            get { return (bool)GetValue(IsMarquingProperty); }
+            set { SetValue(IsMarquingProperty, value); }
         }
 
         private double _marqueeTimeInSeconds;

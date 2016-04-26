@@ -42,3 +42,29 @@ D:\Proj\thurst media player\thurst media player\obj\Debug\JW media player_Markup
 D:\Proj\thurst media player\thurst media player\obj\Debug\JW media player.g.resources
 D:\Proj\thurst media player\thurst media player\obj\Debug\JW media player.exe
 D:\Proj\thurst media player\thurst media player\obj\Debug\JW media player.pdb
+D:\Proj\thurst media player\Meeting-broadcasting\bin\Debug\JW media player.exe.config
+D:\Proj\thurst media player\Meeting-broadcasting\obj\Debug\JW media player.exe
+D:\Proj\thurst media player\Meeting-broadcasting\obj\Debug\JW media player.pdb
+D:\Proj\thurst media player\Meeting-broadcasting\bin\Debug\JW media player.exe
+D:\Proj\thurst media player\Meeting-broadcasting\bin\Debug\JW media player.pdb
+D:\Proj\thurst media player\Meeting-broadcasting\bin\Debug\NAudio.dll
+D:\Proj\thurst media player\Meeting-broadcasting\bin\Debug\NAudio.xml
+D:\Proj\thurst media player\Meeting-broadcasting\obj\Debug\thurst media player.csprojResolveAssemblyReference.cache
+D:\Proj\thurst media player\Meeting-broadcasting\obj\Debug\Controls\MarqueeTextControl.baml
+D:\Proj\thurst media player\Meeting-broadcasting\obj\Debug\Controls\CircularProgressBar.g.cs
+D:\Proj\thurst media player\Meeting-broadcasting\obj\Debug\Controls\LoadingPanel.g.cs
+D:\Proj\thurst media player\Meeting-broadcasting\obj\Debug\MainWindow.g.cs
+D:\Proj\thurst media player\Meeting-broadcasting\obj\Debug\Controls\MarqueeTextControl.g.cs
+D:\Proj\thurst media player\Meeting-broadcasting\obj\Debug\App.g.cs
+D:\Proj\thurst media player\Meeting-broadcasting\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\Proj\thurst media player\Meeting-broadcasting\obj\Debug\JW media player_MarkupCompile.cache
+D:\Proj\thurst media player\Meeting-broadcasting\obj\Debug\JW media player_MarkupCompile.lref
+D:\Proj\thurst media player\Meeting-broadcasting\obj\Debug\App.baml
+D:\Proj\thurst media player\Meeting-broadcasting\obj\Debug\Controls\CircularProgressBar.baml
+D:\Proj\thurst media player\Meeting-broadcasting\obj\Debug\Controls\LoadingPanel.baml
+D:\Proj\thurst media player\Meeting-broadcasting\obj\Debug\Icons.baml
+D:\Proj\thurst media player\Meeting-broadcasting\obj\Debug\MainWindow.baml
+D:\Proj\thurst media player\Meeting-broadcasting\obj\Debug\PlayButtonStyle.baml
+D:\Proj\thurst media player\Meeting-broadcasting\obj\Debug\JW media player.g.resources
+D:\Proj\thurst media player\Meeting-broadcasting\obj\Debug\thurst_media_player.Properties.Resources.resources
+D:\Proj\thurst media player\Meeting-broadcasting\obj\Debug\thurst media player.csproj.GenerateResource.Cache

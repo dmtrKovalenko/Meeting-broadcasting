@@ -1,10 +1,4 @@
-﻿//  --------------------------------
-//  Copyright (c) Huy Pham. All rights reserved.
-//  This source code is made available under the terms of the Microsoft Public License (Ms-PL)
-//  http://www.opensource.org/licenses/ms-pl.html
-//  ---------------------------------
-
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Input;
 
 namespace thurst_media_player.Controls
@@ -41,12 +35,6 @@ namespace thurst_media_player.Controls
         {
             get { return (string)GetValue(MessageProperty); }
             set { SetValue(MessageProperty, value); }
-        }
-
-        public string SubMessage
-        {
-            get { return (string)GetValue(SubMessageProperty); }
-            set { SetValue(SubMessageProperty, value); }
         }
 
     }

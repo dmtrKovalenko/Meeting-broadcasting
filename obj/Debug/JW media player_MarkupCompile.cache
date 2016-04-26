@@ -4,15 +4,15 @@
 winexe
 C#
 .cs
-D:\Proj\thurst media player\thurst media player\obj\Debug\
+D:\Proj\thurst media player\Meeting-broadcasting\obj\Debug\
 thurst_media_player
 none
 false
 DEBUG;TRACE
-D:\Proj\thurst media player\thurst media player\App.xaml
+D:\Proj\thurst media player\Meeting-broadcasting\App.xaml
 6-380501540
 
-9330270391
+9603229351
 16990851042
 Controls\CircularProgressBar.xaml;Controls\LoadingPanel.xaml;Icons.xaml;MainWindow.xaml;Controls\MarqueeTextControl.xaml;PlayButtonStyle.xaml;
 

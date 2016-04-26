@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:thurst_media_player"
         xmlns:mar="clr-namespace:thurst_media_player.Controls"
-        mc:Ignorable="d" DataContext="{Binding RelativeSource={RelativeSource Mode=Self}}" 
+        mc:Ignorable="d" 
+        DataContext="{Binding RelativeSource={RelativeSource Mode=Self}}" 
         Title="Meeting Broadcasting" Height="216.165" Width="338.59" ResizeMode="CanMinimize" Icon="jw_icon.ico">
     <Grid>
         <Grid.RowDefinitions>
@@ -77,14 +78,17 @@
 				Content ="{StaticResource VolumeIcon}"/>
 
         <mar:MarqueeText x:Name="marqueeAttention"
-                         Background="Transparent" FontSize="21"
+                         Background="Transparent"
+                         FontSize="21"
+                         IsMarquing="True"
                          MarqueeTimeInSeconds="18" 
                          Foreground="Black" Margin="0,-1,-167,4" 
                          Grid.ColumnSpan="5"/>
 
         <mar:LoadingPanel Margin="0,93,161,-2" Height="56" 
                           IsLoading="{Binding IsLoading}"
-                          Grid.Row="1"  Grid.Column="1" 
+                          Grid.Row="1"  
+                          Grid.Column="1" 
                           VerticalAlignment="Center" 
                           Grid.ColumnSpan="2" Grid.RowSpan="2"/>
 

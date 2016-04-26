@@ -4,7 +4,6 @@ using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Threading;
-using System.Threading;
 using System.Windows.Media.Animation;
 using System.ComponentModel;
 
@@ -17,6 +16,7 @@ namespace thurst_media_player
     {
         private MediaPlayer _player = new MediaPlayer();
         private MediaTimeline _line;
+        private string _attentionText;
         private bool _isLoaded = new bool();
         private string _threadURL = Properties.Settings.Default.ThreadURL;
         double lastVolumeValue = new double();
@@ -58,35 +58,54 @@ namespace thurst_media_player
             }
         }
 
-        public void CheckConnection()
+        public string AttentionText
         {
-            play.IsEnabled = false;
-            IsLoading = true;
-            DispatcherTimer loadingTimer = new DispatcherTimer(DispatcherPriority.Background, Application.Current.Dispatcher);
-            loadingTimer.Interval = new TimeSpan(0, 0, 0, 1);
-            loadingTimer.Tick += (s, e) =>
+            get
             {
-                IsLoading = false;
-                loadingTimer.IsEnabled = false;
-                play.IsEnabled = true;
-            };
-            loadingTimer.Start();
-
-            if (!InternetConnection.IsInternetConnection(_threadURL))
+                return _attentionText;
+            }
+            set
             {
-                Dispatcher.BeginInvoke(new Action(() => play.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Resources/play-icon.png")))));
-
-                if (!InternetConnection.IsInternetConnection("https://www.google.co.in/"))
-                {
-                    Dispatcher.BeginInvoke(new Action(() => marqueeAttention.MarqueeContent = "Please, check your connection to Internet, for reconnection press play"));
-                }
-                else
-                {
-                    Dispatcher.BeginInvoke(new Action(() => marqueeAttention.MarqueeContent = "Sorry, now broadcasting is not available, for reconnection press play"));
-                }
+                _attentionText = value;
+                OnPropertyChanged(nameof(AttentionText));
             }
         }
 
+        public Task CheckConnection()
+        {
+            return Task.Run(() =>
+           {
+               App.Current.Dispatcher.Invoke(async () =>
+               {
+                   play.IsEnabled = false;
+                   IsLoading = true;
+                   DispatcherTimer loadingTimer = new DispatcherTimer();
+                   loadingTimer.Interval = new TimeSpan(0, 0, 0, 1);
+                   loadingTimer.Tick += (s, e) =>
+                   {
+                       IsLoading = false;
+                       loadingTimer.IsEnabled = false;
+                       play.IsEnabled = true;
+                   };
+                   loadingTimer.Start();
+
+                   if (await ConnectivityChecker.CheckInternet(_threadURL) != ConnectivityChecker.ConnectionStatus.Connected)
+                   {
+                       play.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Resources/play-icon.png")));
+
+                       if (await ConnectivityChecker.CheckInternet() != ConnectivityChecker.ConnectionStatus.Connected)
+                       {
+                           marqueeAttention.MarqueeContent = "Please, check your connection to Internet, for reconnection press play";
+                       }
+                       else
+                       {
+                           marqueeAttention.MarqueeContent = "Sorry, now broadcasting is not available, for reconnection press play";
+                       }
+                   }
+
+               });
+           });
+        }
 
         private void Clock_StateInvalidated(object sender, EventArgs e)
         {
@@ -163,7 +182,7 @@ namespace thurst_media_player
             }
             else if (_player.Clock.CurrentState == ClockState.Stopped)
             {
-                Task.Run(()=>CheckConnection());
+                Task.Run(() => CheckConnection());
                 _player.Clock = _line.CreateClock(true) as MediaClock;
                 _player.Clock.CurrentTimeInvalidated += Clock_TimeChanged;
             }
