@@ -74,37 +74,37 @@ namespace thurst_media_player
         public Task CheckConnection()
         {
             return Task.Run(() =>
-           {
-               App.Current.Dispatcher.Invoke(async () =>
-               {
-                   play.IsEnabled = false;
-                   IsLoading = true;
-                   DispatcherTimer loadingTimer = new DispatcherTimer();
-                   loadingTimer.Interval = new TimeSpan(0, 0, 0, 1);
-                   loadingTimer.Tick += (s, e) =>
-                   {
-                       IsLoading = false;
-                       loadingTimer.IsEnabled = false;
-                       play.IsEnabled = true;
-                   };
-                   loadingTimer.Start();
+            {
+                App.Current.Dispatcher.Invoke(async () =>
+                {
+                    play.IsEnabled = false;
+                    IsLoading = true;
+                    DispatcherTimer loadingTimer = new DispatcherTimer();
+                    loadingTimer.Interval = new TimeSpan(0, 0, 0, 1);
+                    loadingTimer.Tick += (s, e) =>
+                    {
+                        IsLoading = false;
+                        loadingTimer.IsEnabled = false;
+                        play.IsEnabled = true;
+                    };
+                    loadingTimer.Start();
 
-                   if (await ConnectivityChecker.CheckInternet(_threadURL) != ConnectivityChecker.ConnectionStatus.Connected)
-                   {
-                       play.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Resources/play-icon.png")));
+                    if (await ConnectivityChecker.CheckInternet(_threadURL) != ConnectivityChecker.ConnectionStatus.Connected)
+                    {
+                        play.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Resources/play-icon.png")));
 
-                       if (await ConnectivityChecker.CheckInternet() != ConnectivityChecker.ConnectionStatus.Connected)
-                       {
-                           marqueeAttention.MarqueeContent = "Please, check your connection to Internet, for reconnection press play";
-                       }
-                       else
-                       {
-                           marqueeAttention.MarqueeContent = "Sorry, now broadcasting is not available, for reconnection press play";
-                       }
-                   }
+                        if (await ConnectivityChecker.CheckInternet() != ConnectivityChecker.ConnectionStatus.Connected)
+                        {
+                            marqueeAttention.MarqueeContent = "Please, check your connection to Internet, for reconnection press play";
+                        }
+                        else
+                        {
+                            marqueeAttention.MarqueeContent = "Sorry, now broadcasting is not available, for reconnection press play";
+                        }
+                    }
 
-               });
-           });
+                });
+            });
         }
 
         private void Clock_StateInvalidated(object sender, EventArgs e)

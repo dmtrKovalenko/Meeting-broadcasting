@@ -68,3 +68,6 @@ D:\Proj\thurst media player\Meeting-broadcasting\obj\Debug\PlayButtonStyle.baml
 D:\Proj\thurst media player\Meeting-broadcasting\obj\Debug\JW media player.g.resources
 D:\Proj\thurst media player\Meeting-broadcasting\obj\Debug\thurst_media_player.Properties.Resources.resources
 D:\Proj\thurst media player\Meeting-broadcasting\obj\Debug\thurst media player.csproj.GenerateResource.Cache
+C:\Users\diant\Source\Repos\Meeting-broadcasting\bin\Debug\JW media player.exe.config
+C:\Users\diant\Source\Repos\Meeting-broadcasting\obj\Debug\JW media player.exe
+C:\Users\diant\Source\Repos\Meeting-broadcasting\obj\Debug\JW media player.pdb
