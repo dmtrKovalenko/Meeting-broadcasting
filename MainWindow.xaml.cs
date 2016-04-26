@@ -17,20 +17,20 @@ namespace thurst_media_player
         private MediaPlayer _player = new MediaPlayer();
         private MediaTimeline _line;
         private string _attentionText;
-        private bool _isLoaded = new bool();
-        private string _threadURL = Properties.Settings.Default.ThreadURL;
-        double lastVolumeValue = new double();
+        private bool _isLoaded;
+        private string _threadURL = "http://air.radiorecord.ru:8102/yo_320";
+        private double _lastVolumeValue;
 
         public MainWindow()
         {
             InitializeComponent();
-            CheckConnectionAsync();
 
             _line = new MediaTimeline(new Uri(_threadURL));
             _player.Clock = _line.CreateClock(true) as MediaClock;
+            _isLoaded = new bool();
+            _lastVolumeValue = new double();
 
             _player.MediaFailed += Player_Failed;
-            _player.BufferingStarted += Player_Started;
             _player.Clock.CurrentTimeInvalidated += Clock_TimeInvalidated;
             _player.BufferingStarted += Player_BufferingStarted;
             _player.BufferingEnded += Player_BufferingEnded;
@@ -71,29 +71,34 @@ namespace thurst_media_player
             }
         }
 
-        public Task CheckConnectionAsync()
+        public void LoadTimerAnimation()
         {
-            return Task.Run(() =>
+            play.IsEnabled = false;
+            IsLoading = true;
+            DispatcherTimer loadingTimer = new DispatcherTimer();
+            loadingTimer.Interval = new TimeSpan(0, 0, 0, 1);
+            loadingTimer.Tick += (s, e) =>
+            {
+                IsLoading = false;
+                loadingTimer.IsEnabled = false;
+                play.IsEnabled = true;
+            };
+            loadingTimer.Start();
+        }
+
+        public async Task CheckConnectionAsync()
+        {
+            await Task.Run(() =>
             {
                 App.Current.Dispatcher.Invoke(async () =>
                 {
-                    play.IsEnabled = false;
-                    IsLoading = true;
-                    DispatcherTimer loadingTimer = new DispatcherTimer();
-                    loadingTimer.Interval = new TimeSpan(0, 0, 0, 1);
-                    loadingTimer.Tick += (s, e) =>
+                    if (await ConnectivityChecker.CheckInternetConnectionAsync(_threadURL) == false)
                     {
-                        IsLoading = false;
-                        loadingTimer.IsEnabled = false;
-                        play.IsEnabled = true;
-                    };
-                    loadingTimer.Start();
-
-                    if (await ConnectivityChecker.CheckConnectionAsync(_threadURL) != ConnectivityChecker.ConnectionStatus.Connected)
-                    {
+                        marqueeAttention.IsMarquing = true;
+                        StopAnimation();
                         play.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Resources/play-icon.png")));
 
-                        if (await ConnectivityChecker.CheckConnectionAsync() != ConnectivityChecker.ConnectionStatus.Connected)
+                        if (await ConnectivityChecker.CheckInternetConnectionAsync() == false)
                         {
                             marqueeAttention.MarqueeContent = "Please, check your connection to Internet, for reconnection press play";
                         }
@@ -102,16 +107,19 @@ namespace thurst_media_player
                             marqueeAttention.MarqueeContent = "Sorry, now broadcasting is not available, for reconnection press play";
                         }
                     }
+                    else
+                    {
+                        marqueeAttention.IsMarquing = false;
+                        StartAnimation();
+                    }
+                        
                 });
             });
         }
 
         private void Clock_StateInvalidated(object sender, EventArgs e)
         {
-            if (_player.Clock.CurrentState == ClockState.Stopped)
-            {
-                IsLoading = true;
-            }
+           
         }
 
         private void Player_BufferingEnded(object sender, EventArgs e)
@@ -119,15 +127,15 @@ namespace thurst_media_player
             IsLoading = false;
         }
 
-        private void Player_BufferingStarted(object sender, EventArgs e)
+        private async void Player_BufferingStarted(object sender, EventArgs e)
         {
             IsLoading = true;
+            await CheckConnectionAsync();
         }
 
-        private void Player_Failed(object sender, EventArgs e1)
+        private async void Player_Failed(object sender, EventArgs e1)
         {
-            CheckConnectionAsync();
-            marqueeAttention.IsMarquing = true;
+            await CheckConnectionAsync();
             _player.Clock.Controller.Stop();
             StopAnimation();
         }
@@ -154,24 +162,17 @@ namespace thurst_media_player
         {
             ThicknessAnimation titleAnimation = new ThicknessAnimation(new Thickness(45, -40, 0, 0.5), new TimeSpan(0, 0, 1), FillBehavior.HoldEnd);
             title.BeginAnimation(MarginProperty, titleAnimation);
-            Dispatcher.BeginInvoke(new Action(() => marqueeAttention.IsMarquing = true));
         }
 
         private void Clock_TimeInvalidated(object sender, EventArgs e)
         {
-            TimeSpan clockCurrentTime = new TimeSpan();
-            try
+            if (_player.Clock.CurrentTime != null)
             {
-                clockCurrentTime = _player.Clock.CurrentTime.Value;
+                Duration.Content = _player.Clock.CurrentTime.Value.ToString(_player.Clock.CurrentTime.Value.Hours < 1 ? "mm\\:ss" : "hh\\:mm\\:ss");
             }
-            catch
-            {
-                clockCurrentTime = TimeSpan.Zero;
-            }
-            Duration.Content = clockCurrentTime.ToString(clockCurrentTime.Hours < 1 ? "mm\\:ss" : "hh\\:mm\\:ss");
         }
 
-        private void play_Click(object sender, RoutedEventArgs e)
+        private async void play_Click(object sender, RoutedEventArgs e)
         {
             ImageBrush content = play.Background as ImageBrush;
             if (_player.Clock.IsPaused)
@@ -179,9 +180,9 @@ namespace thurst_media_player
                 _player.Clock.Controller.Resume();
                 content.ImageSource = new BitmapImage(new Uri("pack://application:,,,/Resources/pause-icon.png", UriKind.RelativeOrAbsolute));
             }
-            else if (_player.Clock.CurrentState == ClockState.Stopped)
+            else if (_player.Clock.CurrentState == ClockState.Stopped) //if player failed or not created ClockState will be set to "stopped"
             {
-                Task.Run(() => CheckConnectionAsync());
+                await CheckConnectionAsync();
                 _player.Clock = _line.CreateClock(true) as MediaClock;
                 _player.Clock.CurrentTimeInvalidated += Clock_TimeInvalidated;
             }
@@ -196,7 +197,7 @@ namespace thurst_media_player
         {
             if (!_player.IsMuted)
             {
-                lastVolumeValue = volumeSlider.Value;
+                _lastVolumeValue = volumeSlider.Value;
                 _player.IsMuted = true;
                 volumeSlider.Value = 0;
 
@@ -205,7 +206,7 @@ namespace thurst_media_player
             else
             {
                 _player.IsMuted = false;
-                volumeSlider.Value = lastVolumeValue;
+                volumeSlider.Value = _lastVolumeValue;
 
                 mute.Content = Application.Current.Resources["VolumeIcon"];
             }

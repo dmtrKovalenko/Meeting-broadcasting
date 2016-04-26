@@ -28,7 +28,10 @@ namespace thurst_media_player.Controls
 
         public string MarqueeContent
         {
-            get { return (string)GetValue(MarqueeContentProperty); }
+            get
+            {
+                return (string)GetValue(MarqueeContentProperty);
+            }
             set
             {
                 SetValue(MarqueeContentProperty, value);
@@ -38,8 +41,15 @@ namespace thurst_media_player.Controls
 
         public bool IsMarquing
         {
-            get { return (bool)GetValue(IsMarquingProperty); }
-            set { SetValue(IsMarquingProperty, value); }
+            get
+            {
+                return (bool)GetValue(IsMarquingProperty);
+            }
+            set
+            {
+                SetValue(IsMarquingProperty, value);
+                RightToLeftMarquee();
+            }
         }
 
         private double _marqueeTimeInSeconds;
@@ -56,14 +66,9 @@ namespace thurst_media_player.Controls
         public MarqueeText()
         {
             InitializeComponent();
-            canMain.Width = this.Width;
-            this.Loaded += new RoutedEventHandler(MarqueeText_Loaded);
-            canMain.Height = this.Height;
-        }
 
-        void MarqueeText_Loaded(object sender, RoutedEventArgs e)
-        {
-            RightToLeftMarquee();
+            canMain.Width = this.Width;
+            canMain.Height = this.Height;
         }
 
         private void RightToLeftMarquee()

@@ -80,7 +80,6 @@
         <mar:MarqueeText x:Name="marqueeAttention"
                          Background="Transparent"
                          FontSize="21"
-                         IsMarquing="True"
                          MarqueeTimeInSeconds="18" 
                          Foreground="Black" Margin="0,-1,-167,4" 
                          Grid.ColumnSpan="5"/>
@@ -92,8 +91,9 @@
                           VerticalAlignment="Center" 
                           Grid.ColumnSpan="2" Grid.RowSpan="2"/>
 
-        <TextBlock x:Name="title" Text ="JW Media Player"
-                   Grid.ColumnSpan="4"  Width="240" 
+        <TextBlock x:Name="title"
+                   Text ="JW Meeting Player"
+                   Grid.ColumnSpan="4"  Width="249" 
                    HorizontalAlignment="Left" 
                    Margin="45,2,0,1" FontSize="29"
                    TextWrapping="Wrap" FontFamily="Arial" TextAlignment="Center"/>

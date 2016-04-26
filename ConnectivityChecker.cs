@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using System.Net;
+using System.Net.NetworkInformation;
 
 namespace thurst_media_player
 {
@@ -12,28 +13,23 @@ namespace thurst_media_player
             Connected
         }
 
-        public static async Task<ConnectionStatus> CheckConnectionAsync(string URL = "dns.msftncsi.com")                                         
+        public static async Task<bool> CheckInternetConnectionAsync(string URL = "http://www.google.com")
         {
+            Ping myPing = new Ping();
             try
             {
-                IPHostEntry entry = await Dns.GetHostEntryAsync(URL);
-                if (entry.AddressList.Length == 0)
+                var pingReply = await myPing.SendPingAsync("google.com", 3000, new byte[32], new PingOptions(64, true));
+                if (pingReply.Status == IPStatus.Success)
                 {
-                    return ConnectionStatus.NotConnected;
-                }
-                else
-                {
-                    if (!entry.AddressList[0].ToString().Equals("131.107.255.255"))
-                    {
-                        return ConnectionStatus.LimitedAccess;
-                    }
+                    return true;
                 }
             }
             catch
             {
-                return ConnectionStatus.NotConnected;
+                return false;
             }
-            return ConnectionStatus.Connected;
+            return false;
         }
     }
+    
 }
