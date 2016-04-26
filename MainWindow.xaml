@@ -100,6 +100,7 @@
 
         <Line Grid.ColumnSpan="5" 
               X1="0" Y1="0" X2="333" Y2="0"
-              Stroke="Black" StrokeThickness="3"/>
+              Stroke="Black" 
+              StrokeThickness="3"/>
     </Grid>
 </Window>

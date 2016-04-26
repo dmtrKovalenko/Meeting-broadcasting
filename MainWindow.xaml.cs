@@ -24,14 +24,14 @@ namespace thurst_media_player
         public MainWindow()
         {
             InitializeComponent();
-            CheckConnection();
+            CheckConnectionAsync();
 
             _line = new MediaTimeline(new Uri(_threadURL));
             _player.Clock = _line.CreateClock(true) as MediaClock;
 
             _player.MediaFailed += Player_Failed;
             _player.BufferingStarted += Player_Started;
-            _player.Clock.CurrentTimeInvalidated += Clock_TimeChanged;
+            _player.Clock.CurrentTimeInvalidated += Clock_TimeInvalidated;
             _player.BufferingStarted += Player_BufferingStarted;
             _player.BufferingEnded += Player_BufferingEnded;
             _player.Clock.CurrentStateInvalidated += Clock_StateInvalidated;
@@ -71,7 +71,7 @@ namespace thurst_media_player
             }
         }
 
-        public Task CheckConnection()
+        public Task CheckConnectionAsync()
         {
             return Task.Run(() =>
             {
@@ -89,11 +89,11 @@ namespace thurst_media_player
                     };
                     loadingTimer.Start();
 
-                    if (await ConnectivityChecker.CheckInternet(_threadURL) != ConnectivityChecker.ConnectionStatus.Connected)
+                    if (await ConnectivityChecker.CheckConnectionAsync(_threadURL) != ConnectivityChecker.ConnectionStatus.Connected)
                     {
                         play.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Resources/play-icon.png")));
 
-                        if (await ConnectivityChecker.CheckInternet() != ConnectivityChecker.ConnectionStatus.Connected)
+                        if (await ConnectivityChecker.CheckConnectionAsync() != ConnectivityChecker.ConnectionStatus.Connected)
                         {
                             marqueeAttention.MarqueeContent = "Please, check your connection to Internet, for reconnection press play";
                         }
@@ -102,7 +102,6 @@ namespace thurst_media_player
                             marqueeAttention.MarqueeContent = "Sorry, now broadcasting is not available, for reconnection press play";
                         }
                     }
-
                 });
             });
         }
@@ -127,7 +126,7 @@ namespace thurst_media_player
 
         private void Player_Failed(object sender, EventArgs e1)
         {
-            CheckConnection();
+            CheckConnectionAsync();
             marqueeAttention.IsMarquing = true;
             _player.Clock.Controller.Stop();
             StopAnimation();
@@ -158,7 +157,7 @@ namespace thurst_media_player
             Dispatcher.BeginInvoke(new Action(() => marqueeAttention.IsMarquing = true));
         }
 
-        private void Clock_TimeChanged(object sender, EventArgs e)
+        private void Clock_TimeInvalidated(object sender, EventArgs e)
         {
             TimeSpan clockCurrentTime = new TimeSpan();
             try
@@ -182,9 +181,9 @@ namespace thurst_media_player
             }
             else if (_player.Clock.CurrentState == ClockState.Stopped)
             {
-                Task.Run(() => CheckConnection());
+                Task.Run(() => CheckConnectionAsync());
                 _player.Clock = _line.CreateClock(true) as MediaClock;
-                _player.Clock.CurrentTimeInvalidated += Clock_TimeChanged;
+                _player.Clock.CurrentTimeInvalidated += Clock_TimeInvalidated;
             }
             else
             {

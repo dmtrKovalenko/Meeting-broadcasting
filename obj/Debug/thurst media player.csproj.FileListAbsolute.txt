@@ -71,3 +71,25 @@ D:\Proj\thurst media player\Meeting-broadcasting\obj\Debug\thurst media player.c
 C:\Users\diant\Source\Repos\Meeting-broadcasting\bin\Debug\JW media player.exe.config
 C:\Users\diant\Source\Repos\Meeting-broadcasting\obj\Debug\JW media player.exe
 C:\Users\diant\Source\Repos\Meeting-broadcasting\obj\Debug\JW media player.pdb
+C:\Users\diant\Source\Repos\Meeting-broadcasting\bin\Debug\JW media player.exe
+C:\Users\diant\Source\Repos\Meeting-broadcasting\bin\Debug\JW media player.pdb
+C:\Users\diant\Source\Repos\Meeting-broadcasting\bin\Debug\NAudio.xml
+C:\Users\diant\Source\Repos\Meeting-broadcasting\obj\Debug\thurst media player.csprojResolveAssemblyReference.cache
+C:\Users\diant\Source\Repos\Meeting-broadcasting\obj\Debug\Controls\MarqueeTextControl.baml
+C:\Users\diant\Source\Repos\Meeting-broadcasting\obj\Debug\Controls\CircularProgressBar.g.cs
+C:\Users\diant\Source\Repos\Meeting-broadcasting\obj\Debug\Controls\LoadingPanel.g.cs
+C:\Users\diant\Source\Repos\Meeting-broadcasting\obj\Debug\MainWindow.g.cs
+C:\Users\diant\Source\Repos\Meeting-broadcasting\obj\Debug\Controls\MarqueeTextControl.g.cs
+C:\Users\diant\Source\Repos\Meeting-broadcasting\obj\Debug\App.g.cs
+C:\Users\diant\Source\Repos\Meeting-broadcasting\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\diant\Source\Repos\Meeting-broadcasting\obj\Debug\JW media player_MarkupCompile.cache
+C:\Users\diant\Source\Repos\Meeting-broadcasting\obj\Debug\JW media player_MarkupCompile.lref
+C:\Users\diant\Source\Repos\Meeting-broadcasting\obj\Debug\App.baml
+C:\Users\diant\Source\Repos\Meeting-broadcasting\obj\Debug\Controls\CircularProgressBar.baml
+C:\Users\diant\Source\Repos\Meeting-broadcasting\obj\Debug\Controls\LoadingPanel.baml
+C:\Users\diant\Source\Repos\Meeting-broadcasting\obj\Debug\Icons.baml
+C:\Users\diant\Source\Repos\Meeting-broadcasting\obj\Debug\MainWindow.baml
+C:\Users\diant\Source\Repos\Meeting-broadcasting\obj\Debug\PlayButtonStyle.baml
+C:\Users\diant\Source\Repos\Meeting-broadcasting\obj\Debug\JW media player.g.resources
+C:\Users\diant\Source\Repos\Meeting-broadcasting\obj\Debug\thurst_media_player.Properties.Resources.resources
+C:\Users\diant\Source\Repos\Meeting-broadcasting\obj\Debug\thurst media player.csproj.GenerateResource.Cache

@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Net;
-using System.Net.NetworkInformation;
 
 namespace thurst_media_player
 {
@@ -17,7 +12,7 @@ namespace thurst_media_player
             Connected
         }
 
-        public static async Task<ConnectionStatus> CheckInternet(string URL = "dns.msftncsi.com")
+        public static async Task<ConnectionStatus> CheckConnectionAsync(string URL = "dns.msftncsi.com")                                         
         {
             try
             {
